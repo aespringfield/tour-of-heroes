@@ -16,9 +16,9 @@ import { HeroSearchService } from './hero-search.service';
 import { Hero } from './hero';
 
 @Component({
-    selector: 'hero-serach',
-    templateUrl: './hero-serach.component.html',
-    styleUrls: ['./hero-serach.component.css'],
+    selector: 'hero-search',
+    templateUrl: './hero-search.component.html',
+    styleUrls: ['./hero-search.component.css'],
     providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {
@@ -27,7 +27,6 @@ export class HeroSearchComponent implements OnInit {
 
     constructor(
         private heroSearchService: HeroSearchService, private router: Router) {}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-
 
     // Push a search term into the observable stream
     search(term: string): void {
@@ -39,7 +38,7 @@ export class HeroSearchComponent implements OnInit {
         .debounceTime(300) // wait 300ms after each keystroke before considering the term
         .distinctUntilChanged() // ignorie fi next search term is same as previous
         .switchMap(term => term // switch to new observable each time the term changes
-            ? this.heroSerachService.serach(term) // return the http search observable
+            ? this.heroSearchService.search(term) // return the http search observable
             : Observable.of<Hero[]>([])) // or the obsrevable of empty heroes if there was no search term
         .catch(error => {
             // TODO: add real error handling
